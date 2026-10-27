@@ -1,3 +1,58 @@
+# Lightwave Smart — Manual Installation (Home Assistant OS)
+
+## 1. Connect using PuTTY
+
+Connect to the SSH app running inside Home Assistant OS, not the Windows host running VirtualBox.
+
+## 2. Install the integration
+
+Run the following commands in PuTTY:
+
+```bash
+cd /config
+mkdir -p custom_components
+
+wget -O /tmp/lightwave.zip \
+https://github.com/LightwaveSmartHome/homeassistant-lightwave-smart/archive/refs/heads/master.zip
+
+unzip -o /tmp/lightwave.zip -d /tmp
+
+cp -r /tmp/homeassistant-lightwave-smart-master/custom_components/lightwave_smart \
+/config/custom_components/
+
+rm /tmp/lightwave.zip
+```
+
+## 3. Verify installation
+
+```bash
+ls -la /config/custom_components/lightwave_smart
+```
+
+Check that `manifest.json` and `__init__.py` exist.
+
+## 4. Restart Home Assistant
+
+Go to:
+
+**Settings → System → Restart Home Assistant**
+
+## 5. Add the integration
+
+1. Open **Settings → Devices & services**.
+2. Select **Add integration**.
+3. Search for **Lightwave Smart**.
+4. Follow the setup instructions.
+
+## Notes
+
+- HACS is not required.
+- The Apps store is not required.
+- This is a custom integration installed under `/config/custom_components/`.
+- A Lightwave Link Plus (generation 2) is required.
+- Manual updates require downloading and copying the integration files again.
+
+
 # Discussions
 
 If you have questions or comment, please see [discussions](https://github.com/LightwaveSmartHome/homeassistant-lightwave-smart/discussions)
